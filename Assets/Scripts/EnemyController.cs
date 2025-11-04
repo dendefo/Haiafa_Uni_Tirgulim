@@ -6,13 +6,28 @@ public class EnemyController : MonoBehaviour
     [Header("Enemy Settings")]
     [SerializeField] private GameObject _player;
     [SerializeField] private float _speed = 0.05f;
-    
-    void Update()
+    [SerializeField] private Rigidbody2D rb;
+
+    void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
+
+    void FixedUpdate()
     {
         //OldMovement();
 
-        var pos = (_player.transform.position - transform.position).normalized*( _speed * Time.deltaTime);
-        transform.position += new Vector3(pos.x, pos.y, 0);
+        
+        if (rb == null)
+        {
+            Debug.LogWarning("Missing Rigidbody2D");
+            return;
+        }
+        var direction = (_player.transform.position - transform.position).normalized*( _speed * Time.deltaTime);
+
+        rb.MovePosition(rb.position + (Vector2)direction * (_speed * Time.fixedDeltaTime));
+
+        //transform.position += new Vector3(pos.x, pos.y, 0);
     }
 
     private void OldMovement()
