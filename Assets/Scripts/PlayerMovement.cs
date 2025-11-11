@@ -6,6 +6,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _speed = 25f;
     Vector3 direction = Vector3.zero;
     [SerializeField] private GameObject diamond;
+    
+    int score = 0;
 
     private Rigidbody2D rb;
 
@@ -40,6 +42,13 @@ public class PlayerMovement : MonoBehaviour
         rb.MovePosition(rb.position + (Vector2)direction * (_speed * Time.fixedDeltaTime));
         
        // transform.position += direction * (_speed * Time.fixedDeltaTime);
+    }
+
+    public void AddScore(int amount)
+    {
+        score += amount;
+        
+        GameManager.Instance.HUD.GetComponent<HUD>().UpdateScore(score);
     }
 
     private void WASDControlls()
