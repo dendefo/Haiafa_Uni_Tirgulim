@@ -1,9 +1,14 @@
 using UnityEngine;
+using System;
 
 public class PlayerController : MonoBehaviour
 {
+    public static event Action OnPlayerDeath;
+    public static event Action OnPointScored;
+
     [SerializeField] Rigidbody2D rb;
     [SerializeField] float JumpForce = 300f;
+    private bool isDead = false;
 
     void Update()
     {
@@ -19,21 +24,34 @@ public class PlayerController : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Triggered with: " + other.name);
-
         if (other.CompareTag("Obstacle"))
         {
-            enabled = false;
-            Debug.Log("Hit an obstacle!");
+            Death();
+        }
+        else if (other.CompareTag("Collectable"))
+        {
+            ScorePoint();
         }
     }
+
+
     void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("Collided with: " + collision.gameObject.name);
         if (collision.gameObject.CompareTag("Obstacle"))
         {
-            enabled = false;
-            Debug.Log("Hit an obstacle!");
+            Death();
         }
+    }
+    private void Death()
+    {
+        if (isDead) return;
+        isDead = true;
+        enabled = false;
+        OnPlayerDeath?.Invoke();
+    }
+    private void ScorePoint()
+    {
+        if (isDead) return;
+        OnPointScored?.Invoke();
     }
 }
