@@ -7,6 +7,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject gameOverUI;
     [SerializeField] TMPro.TMP_Text ScoreText;
     [SerializeField] int score = 0;
+    [SerializeField] string MainMenuName;
     private void OnEnable()
     {
         PlayerController.OnPlayerDeath += HandlePlayerDeath;
@@ -36,6 +37,10 @@ public class UIManager : MonoBehaviour
     public void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+    public void LoadMainMenu()
+    {
+        SceneManager.LoadScene(MainMenuName);
     }
 
 }

@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Rigidbody2D rb;
     [SerializeField] float JumpForce = 300f;
     private bool isDead = false;
+    public PlayerColors PlayerColor;
 
     void Update()
     {
@@ -54,4 +55,8 @@ public class PlayerController : MonoBehaviour
         if (isDead) return;
         OnPointScored?.Invoke();
     }
+}
+public enum PlayerColors
+{
+    Blue, Red, Yellow
 }
