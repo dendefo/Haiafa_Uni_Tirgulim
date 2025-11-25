@@ -7,10 +7,13 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private GameObject _player;
     [SerializeField] private float _speed = 0.05f;
     [SerializeField] private Rigidbody2D rb;
+    
+    string tagPlayer = "Player";
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();   
+        _player = GameObject.FindGameObjectWithTag(tagPlayer);
     }
 
     void FixedUpdate()
