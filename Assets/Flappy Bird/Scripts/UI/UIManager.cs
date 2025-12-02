@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
+    public const string MAX_PLAYER_SCORE = nameof(MAX_PLAYER_SCORE);
     [SerializeField] GameObject gameOverUI;
     [SerializeField] TMPro.TMP_Text ScoreText;
     [SerializeField] int score = 0;
@@ -26,6 +27,13 @@ public class UIManager : MonoBehaviour
     {
         Debug.Log("Player has dieded. Show Game Over UI.");
         gameOverUI.SetActive(true);
+
+        if (PlayerPrefs.GetInt(MAX_PLAYER_SCORE) < score)
+        {
+            PlayerPrefs.SetInt(MAX_PLAYER_SCORE, score);
+            Debug.Log("New High Score: " + score);
+        }
+
     }
     private void ScorePoint()
     {

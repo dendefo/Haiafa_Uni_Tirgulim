@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6535303618742670026}
   - component: {fileID: 5831882389664771174}
   - component: {fileID: 3831192915210328261}
+  - component: {fileID: 2127989194751044278}
   m_Layer: 0
   m_Name: Player Blue
   m_TagString: Untagged
@@ -130,7 +131,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 6535303618742670026}
+  _animator: {fileID: 2127989194751044278}
   JumpForce: 750
+  PlayerColor: 0
 --- !u!61 &3831192915210328261
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -177,3 +180,25 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.34, y: 0.24}
   m_EdgeRadius: 0
+--- !u!95 &2127989194751044278
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7178172833503313380}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f311097df746cdd429369ef41e623f51, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

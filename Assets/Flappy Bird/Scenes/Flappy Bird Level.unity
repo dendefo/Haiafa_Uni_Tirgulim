@@ -228,8 +228,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnInterval: 2
   obstaclePrefab: {fileID: 2076503314049143352, guid: 6ed4f95fd0fa24846bafa3c057fe9905, type: 3}
+  obstaclePool: []
   minY: 1
   maxY: 4
+  poolSize: 5
 --- !u!4 &435013349
 Transform:
   m_ObjectHideFlags: 0
@@ -239,7 +241,7 @@ Transform:
   m_GameObject: {fileID: 435013347}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.9, y: -3.24, z: 0.025953623}
+  m_LocalPosition: {x: 4.9, y: -3.99, z: 0.025953623}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -447,8 +449,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1187,7 +1189,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 700, y: 600}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3

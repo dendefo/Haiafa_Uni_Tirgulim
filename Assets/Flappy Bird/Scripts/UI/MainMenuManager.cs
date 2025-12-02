@@ -13,6 +13,7 @@ public class MainMenuManager : MonoBehaviour
     Coroutine loadingCoroutine;
     [SerializeField] List<PlayerController> playerPrefabs;
     [SerializeField] float distanceToMove = 2;
+    [SerializeField] TMPro.TMP_Text MaxScore;
     Coroutine movingCoroutine;
 
     private void Awake()
@@ -21,6 +22,16 @@ public class MainMenuManager : MonoBehaviour
         {
             selectedColor = Enum.Parse<PlayerColors>(PlayerPrefs.GetString(PLAYER_SELECTED_COLOR));
         }
+
+        if (PlayerPrefs.HasKey(UIManager.MAX_PLAYER_SCORE))
+        {
+            MaxScore.text = "Max Score: " + PlayerPrefs.GetInt(UIManager.MAX_PLAYER_SCORE).ToString();
+        }
+        else
+        {
+            MaxScore.text = "Max Score: 0";
+        }
+        Screen.SetResolution(600, 800, false);
         var player = playerPrefabs.First(x => x.gameObject.activeSelf);
         player.gameObject.SetActive(false);
 

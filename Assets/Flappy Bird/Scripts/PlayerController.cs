@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     public static event Action OnPointScored;
 
     [SerializeField] Rigidbody2D rb;
+    [SerializeField] Animator _animator;
     [SerializeField] float JumpForce = 300f;
     private bool isDead = false;
     public PlayerColors PlayerColor;
@@ -17,11 +18,14 @@ public class PlayerController : MonoBehaviour
         {
             Jump();
         }
+        _animator.SetFloat("Vertical Speed", rb.linearVelocityY);
+        rb.linearVelocityY = Mathf.Min(rb.linearVelocityY, 10);
     }
 
     void Jump()
     {
         rb.AddForce(new Vector2(0, JumpForce));
+        _animator.SetTrigger("Jump");
     }
     void OnTriggerEnter2D(Collider2D other)
     {

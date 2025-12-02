@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Yellow Bird AC
+  m_Controller: {fileID: 9100000, guid: f311097df746cdd429369ef41e623f51, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 5675d1fe1be7eec4eb46d535c2dea488, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: c8085ac938482474083936bea82aa4cf, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 82aa7c514f40ed2498d7a286b6365c62, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 76f4cb23532e91945914da1e8882557a, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: c44f2bbd8c485e547bf70193ea5069be, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: f206422fbb59d594183b33304f8e56ba, type: 2}
