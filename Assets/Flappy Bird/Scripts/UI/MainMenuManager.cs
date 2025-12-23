@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 
 public class MainMenuManager : MonoBehaviour
@@ -14,6 +15,7 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] List<PlayerController> playerPrefabs;
     [SerializeField] float distanceToMove = 2;
     [SerializeField] TMPro.TMP_Text MaxScore;
+    [SerializeField] AudioResource SwooshSFX;
     Coroutine movingCoroutine;
 
     private void Awake()
@@ -85,6 +87,7 @@ public class MainMenuManager : MonoBehaviour
     }
     private IEnumerator PlayerSelection(PlayerController playerToTurnOff, PlayerController playerToTurnOn, bool isRight)
     {
+        AudioManager.GetInstance().PlaySFX(SwooshSFX);
         Vector3 direction = (!isRight ? Vector3.right : Vector3.left) * distanceToMove;
         playerToTurnOn.gameObject.SetActive(true);
         Vector3 oppositreDirection = direction * -1;

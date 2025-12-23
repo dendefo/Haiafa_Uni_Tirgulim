@@ -133,6 +133,9 @@ MonoBehaviour:
   rb: {fileID: 6535303618742670026}
   _animator: {fileID: 2127989194751044278}
   JumpForce: 750
+  jumpSFX: {fileID: 6418180475301049370, guid: 07ca0b2d06b962a47b7a99527ed854ae, type: 2}
+  deathSFX: {fileID: 6418180475301049370, guid: c71a95d01a67ed74abb7ccb9d7b537bf, type: 2}
+  pointSFX: {fileID: 6418180475301049370, guid: c8478bbf3e151a943b058ce2fbe6052e, type: 2}
   PlayerColor: 0
 --- !u!61 &3831192915210328261
 BoxCollider2D:

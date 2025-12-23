@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using UnityEngine.Audio;
 
 public class PlayerController : MonoBehaviour
 {
@@ -9,6 +10,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Rigidbody2D rb;
     [SerializeField] Animator _animator;
     [SerializeField] float JumpForce = 300f;
+    [SerializeField] AudioResource jumpSFX;
+    [SerializeField] AudioResource deathSFX;
+    [SerializeField] AudioResource pointSFX;
     private bool isDead = false;
     public PlayerColors PlayerColor;
 
@@ -26,6 +30,7 @@ public class PlayerController : MonoBehaviour
     {
         rb.AddForce(new Vector2(0, JumpForce));
         _animator.SetTrigger("Jump");
+        AudioManager.GetInstance().PlaySFX(jumpSFX);
     }
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -53,11 +58,13 @@ public class PlayerController : MonoBehaviour
         isDead = true;
         enabled = false;
         OnPlayerDeath?.Invoke();
+        AudioManager.GetInstance().PlaySFX(deathSFX);
     }
     private void ScorePoint()
     {
         if (isDead) return;
         OnPointScored?.Invoke();
+        AudioManager.GetInstance().PlaySFX(pointSFX);
     }
 }
 public enum PlayerColors
