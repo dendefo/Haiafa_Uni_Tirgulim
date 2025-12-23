@@ -1,6 +1,7 @@
 using UnityEngine;
 using System;
 using UnityEngine.Audio;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -13,9 +14,17 @@ public class PlayerController : MonoBehaviour
     [SerializeField] AudioResource jumpSFX;
     [SerializeField] AudioResource deathSFX;
     [SerializeField] AudioResource pointSFX;
+    [SerializeField] AudioResource hitSFX;
     private bool isDead = false;
     public PlayerColors PlayerColor;
+    [SerializeField] Slider HealthSlider;
+    [SerializeField] int StartHelath = 2;
+    [SerializeField] int CurrentHealth = 2;
 
+    private void Start()
+    {
+        CurrentHealth = StartHelath;
+    }
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
@@ -24,6 +33,7 @@ public class PlayerController : MonoBehaviour
         }
         _animator.SetFloat("Vertical Speed", rb.linearVelocityY);
         rb.linearVelocityY = Mathf.Min(rb.linearVelocityY, 10);
+        HealthSlider.transform.rotation = Quaternion.identity;
     }
 
     void Jump()
@@ -36,7 +46,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other.CompareTag("Obstacle"))
         {
-            Death();
+            GetHit();
         }
         else if (other.CompareTag("Collectable"))
         {
@@ -49,9 +59,24 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Obstacle"))
         {
-            Death();
+            GetHit();
         }
     }
+
+    private void GetHit()
+    {
+        CurrentHealth--;
+        HealthSlider.value = (CurrentHealth / (float)StartHelath);
+        if (CurrentHealth <= 0)
+        {
+            Death();
+        }
+        else
+        {
+            AudioManager.GetInstance().PlaySFX(hitSFX);
+        }
+    }
+
     private void Death()
     {
         if (isDead) return;

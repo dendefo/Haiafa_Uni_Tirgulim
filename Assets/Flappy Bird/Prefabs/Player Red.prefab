@@ -8,6 +8,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 480855449801636057, guid: 3ef44707ee85706489cc5d3133f28201, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 480855449801636057, guid: 3ef44707ee85706489cc5d3133f28201, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1590957285842615364, guid: 3ef44707ee85706489cc5d3133f28201, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -61,6 +69,10 @@ PrefabInstance:
       value: Player Red
       objectReference: {fileID: 0}
     - target: {fileID: 8004931413569193838, guid: 3ef44707ee85706489cc5d3133f28201, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1800146326, guid: ca8d2401f8dde764698aeb52bb2e1127, type: 3}
+    - target: {fileID: 8352780143816756971, guid: 3ef44707ee85706489cc5d3133f28201, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 1800146326, guid: ca8d2401f8dde764698aeb52bb2e1127, type: 3}

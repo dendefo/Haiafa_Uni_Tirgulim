@@ -6,8 +6,8 @@ AudioContainerElement:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: die_{-4564661641177044393}
-  m_AudioClip: {fileID: 8300000, guid: c60c9f52bb3fc03449734565ea654471, type: 3}
+  m_Name: hit_{-4564661641177044393}
+  m_AudioClip: {fileID: 8300000, guid: 06866a0f6c4b88b4a9e7f4e3f046543c, type: 3}
   m_Volume: 0
   m_Enabled: 1
 --- !u!1233149941 &6358314128873074666
@@ -16,8 +16,8 @@ AudioContainerElement:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: die_{6358314128873074666}
-  m_AudioClip: {fileID: 8300000, guid: d29a57d067b4e6f40a04d6ca3f518488, type: 3}
+  m_Name: hit_{6358314128873074666}
+  m_AudioClip: {fileID: 8300000, guid: 214e0762c7d690746a4368aca41e98f2, type: 3}
   m_Volume: 0
   m_Enabled: 1
 --- !u!1307931743 &6418180475301049370
@@ -26,13 +26,13 @@ AudioRandomContainer:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Death SFX
+  m_Name: Hit SFX
   m_Volume: 0
-  m_Pitch: 914
+  m_Pitch: 0
   m_AutomaticTriggerTime: 0
   m_LoopCount: 1
   m_VolumeRandomizationRange: {x: 0, y: 21.789885}
-  m_PitchRandomizationRange: {x: -56.03116, y: 93.38522}
+  m_PitchRandomizationRange: {x: -359.5331, y: 420.2335}
   m_AutomaticTriggerTimeRandomizationRange: {x: 0, y: 0}
   m_LoopCountRandomizationRange: {x: 0, y: 0}
   m_Elements:
