@@ -1,13 +1,17 @@
 using System;
 using UnityEngine;
 
+[HelpURL("https://example.com/docs/MyComponent")]
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float _speed = 25f;
+    [SerializeField] HealthData healthData;
+    [SerializeField] IntEventBuffer HelathChangedEvent;
     Vector3 direction = Vector3.zero;
     [SerializeField] private GameObject diamond;
-    
-    int score = 0;
+
+    [ContextMenuItem("ChangeHP", "ChangeHP")]
+    public int score = 0;
 
     private Vector3 orginalScale;
 
@@ -19,15 +23,14 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        
-        orginalScale =  transform.localScale;
+        orginalScale = transform.localScale;
     }
 
     // Update is called once per frame
     void Update()
     {
         //WASDControlls();
-        
+
         if (Input.GetMouseButtonDown(0))
             animator.SetTrigger("Attack");
 
@@ -41,9 +44,9 @@ public class PlayerMovement : MonoBehaviour
         var y = Input.GetAxis("Vertical");
         var x = Input.GetAxis("Horizontal");
         direction = new Vector3(x, y, 0);
-        
-        
-        bool isWalking =   x != 0 || y != 0;
+
+
+        bool isWalking = x != 0 || y != 0;
         animator.SetBool("IsWalking", isWalking);
 
 
@@ -51,15 +54,15 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.localScale = new Vector3(x < 0 ? -orginalScale.x : orginalScale.x, orginalScale.y, 1);
         }
-        
+
         if (rb == null)
         {
             Debug.LogWarning("Missing Rigidbody2D");
             return;
         }
-        
+
         rb.MovePosition(rb.position + (Vector2)direction * (_speed * Time.fixedDeltaTime));
-        
+
         // transform.position += direction * (_speed * Time.fixedDeltaTime);
 
     }
@@ -67,23 +70,28 @@ public class PlayerMovement : MonoBehaviour
     public static bool IsAnimationFinised(Animator animator, string AnimationName)
     {
         AnimatorStateInfo info = animator.GetCurrentAnimatorStateInfo(0);
-        
+
         if (!info.IsName(AnimationName)) return true;
-        
+
         if (info.normalizedTime >= 1)
             return true;
-        
+
         return false;
     }
 
-    private void FixedUpdate()
+    [ContextMenu("Change HP")]
+    public void ChangeHP()
     {
-            }
+        var hp = healthData.GetCurrentHealth() - 1;
+        healthData.SetCurrentHealth(hp);
+        HelathChangedEvent.Notify((int)hp);
+
+    }
 
     public void AddScore(int amount)
     {
         score += amount;
-        
+
         GameManager.Instance.HUD.GetComponent<HUD>().UpdateScore(score);
     }
 
@@ -106,7 +114,7 @@ public class PlayerMovement : MonoBehaviour
         {
             direction += Vector2.right;
         }
-        transform.position +=(Vector3)direction * (_speed * Time.deltaTime);
+        transform.position += (Vector3)direction * (_speed * Time.deltaTime);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
