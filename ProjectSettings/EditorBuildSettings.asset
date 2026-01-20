@@ -6,6 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Settings/Scenes/2D URP Scene Template.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
-  m_configObjects: {}
+    path: Assets/Scenes/ArcadeGame.unity
+    guid: 109c48878ad88b14db64f49ded948727
+  m_configObjects:
+    com.unity.addressableassets: {fileID: 11400000, guid: 4b10253ff53cdf14fb66b6ae71d058eb, type: 2}
+  m_UseUCBPForAssetBundles: 0
